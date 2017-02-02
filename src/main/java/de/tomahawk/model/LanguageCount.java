@@ -33,7 +33,6 @@ public class LanguageCount implements Comparable<LanguageCount> {
 	public int compareTo(LanguageCount lp) {
 		if (this.language.equals("Unknown")) return 1;
 		if (lp.getLanguage().equals("Unknown")) return -1;
-		
 		return lp.getRepoCount() - this.repoCount;
 	}
 	

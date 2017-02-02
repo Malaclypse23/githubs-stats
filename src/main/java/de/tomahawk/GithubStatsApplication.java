@@ -24,6 +24,7 @@ public class GithubStatsApplication {
 	
 	public static final String COMPANY = "codecentric";
 	public static final String DEVELOPERS_URL = "https://api.github.com/orgs/" + COMPANY + "/members?per_page=100";
+	public static final int LIMIT = 15; // limit API requests
 	
 	private static final Logger log = LoggerFactory.getLogger(GithubStatsApplication.class);
 	
@@ -41,13 +42,12 @@ public class GithubStatsApplication {
 	public CommandLineRunner importDevelopers() {
 		return (args) -> {
 			ObjectMapper mapper = new ObjectMapper();
-			
 			List<Developer> developers = mapper.readValue(new URL(DEVELOPERS_URL), new TypeReference<List<Developer>>(){});
 			
-//			int i = 0; // TODO raus
+			int i = 1;
 
 			for (Developer developer : developers) {
-//				if (i > 4) break; TODO raus
+				if (i > LIMIT) break;
 				final String USER_REPOS_URL = developer.getReposUrl() + "?per_page=100";
 				
 				int reposSize = 0;
@@ -65,7 +65,7 @@ public class GithubStatsApplication {
 				developer.setRepoCount(reposSize);
 				log.info(developer.getLogin() + " saved with " + reposSize + " repositories");
 				developerService.saveDeveloper(developer);
-//				i = i + 1;
+				i++;
 			}
 		};
 	}
