@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<title>Github Stats</title>
+
+<link rel="stylesheet" href="style.css"></link>
+</head>
+
+<body>
+	<h1>Github Stats</h1>
+
+	<h2>codecentric @ Github</h2>
+	
+	<table class="dev">
+		<tr>
+			<th>ID</th>
+			<th>Login</th>
+			<th class="url">Repos-URL</th>
+			<th># Repos</th>
+		</tr>
+		<tr th:each="dev,i : ${developers}">
+			<td th:text="${dev.id}"></td>
+			<td th:text="${dev.login}"></td>
+			<td class="url" th:text="${dev.reposUrl}"></td>
+			<td th:text="${dev.repoCount}"></td>
+		</tr>
+	</table>
+	
+	<h2>Programming Language Experts</h2>
+	
+<!-- 	<form action="#" th:action="@{/index.html}" th:object="${language}" method="post"> -->
+		<select>
+            <option th:each="l : ${languages}"
+                    th:value="${l}" th:text="${l}">Language</option>
+        </select>
+<!-- 	    <input type="submit" value="Search"/>     -->
+<!-- 	</form> -->
+	
+	<ul>
+		<li th:each="lc,i : ${languagecounts}">
+			<table>
+				<tr>
+					<th th:text="${lc.key}">Programmer></th>
+					<th>Language</th>
+					<th></th>
+				</tr>
+				<tr th:each="l,j : ${lc.value}">
+					<td></td>
+					<td th:text="${l.language}">Language</td>
+					<td th:text="${l.repoCount}"># Repos</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+	
+</body>
+
+</html>

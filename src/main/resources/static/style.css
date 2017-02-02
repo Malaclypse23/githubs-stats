@@ -1,0 +1,30 @@
+body {
+	padding: 2rem;
+}
+
+tr {
+	padding: .5rem;
+	border-top: 1px solid black;
+}
+
+tr:first-of-type {
+	margin.top: .5rem;
+	border-top: 0 none;
+}
+
+th, td {
+	width: 150px;
+	text-align: left;
+}
+
+.dev .url {
+	width: 480px;
+}
+
+.dev th:first-of-type, .dev td:first-of-type {
+	width: 50px;
+}
+
+ul, li {
+	list-style: none;
+}
