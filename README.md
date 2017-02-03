@@ -2,7 +2,7 @@
 Github statistics
 
 1)
-mvn clean install -DskipTests="true"
+mvn clean install 
 
 2)
 mvn spring-boot:run
